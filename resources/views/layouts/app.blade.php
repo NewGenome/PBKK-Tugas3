@@ -3,68 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'ITS Academic Portal')</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #f8fafc;
-        }
-        .navbar-its {
-            background-color: forestgreen;
-        }
-    </style>
+    <title>{{ $title ?? 'Profil Akademik ITS' }}</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="d-flex flex-column min-vh-100">
 
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-its shadow-sm">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" href="{{ route('home') }}">
-                <span>Academy Profile</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto gap-1">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('home') }}">
-                            <i class="fa-solid fa-house me-1"></i> Home
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('mahasiswa.detail', ['nrp' => '5025241162']) }}">
-                            <i class="fa-solid fa-user-graduate me-1"></i> Profil Mahasiswa
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('agent.idea') }}">
-                            <i class="fa-solid fa-robot me-1"></i> Agentic AI
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('kalkulator.ipk', ['ip1' => '3.85', 'ip2' => '3.92']) }}">
-                            <i class="fa-solid fa-calculator me-1"></i> Hitung IPK
-                        </a>
-                    </li>
-                </ul>
+@php
+    $currentMode = request()->query('mode', 'light');
+    $isDarkMode = $currentMode === 'dark';
+    
+    $toggleMode = $isDarkMode ? 'light' : 'dark';
+    
+    $bodyClass = $isDarkMode ? 'bg-gray-900 text-gray-100' : 'bg-gray-50 text-gray-800';
+    $footerClass = $isDarkMode ? 'bg-gray-900 border-gray-800 text-gray-400' : 'bg-white border-gray-200 text-gray-500';
+@endphp
+
+<body class="{{ $bodyClass }} font-sans antialiased flex flex-col min-h-screen transition-colors duration-300">
+
+    <nav class="bg-its-green text-white shadow-md">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0 font-bold text-xl tracking-wide">
+                    Academy Profile
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-6 text-sm font-medium">
+                    <a href="{{ route('home', ['mode' => $currentMode]) }}" class="flex items-center gap-2 hover:text-gray-200 transition">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
+                        Home
+                    </a>
+                    <a href="{{ route('profil', ['mode' => $currentMode]) }}" class="flex items-center gap-2 hover:text-gray-200 transition">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
+                        Profil Mahasiswa
+                    </a>
+                    <a href="{{ route('ide-agent', ['mode' => $currentMode]) }}" class="flex items-center gap-2 hover:text-gray-200 transition">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2M7.5 13a2.5 2.5 0 0 0 0 5 2.5 2.5 0 0 0 0-5m9 0a2.5 2.5 0 0 0 0 5 2.5 2.5 0 0 0 0-5Z"/></svg>
+                        Agentic AI
+                    </a>
+                    
+                    <a href="{{ request()->url() }}?mode={{ $toggleMode }}" class="flex items-center gap-2 bg-its-dark px-3 py-1.5 rounded-md hover:bg-opacity-80 transition border border-green-600">
+                        @if($isDarkMode)
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                            Light Mode
+                        @else
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                            Dark Mode
+                        @endif
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
 
-    <!-- Main Content Injection -->
-    <main class="container py-4 flex-grow-1">
+    <main class="flex-grow max-w-6xl mx-auto px-4 py-8 w-full">
         @yield('content')
     </main>
 
-    <!-- Footer Section -->
-    <footer class="bg-white border-top py-3 text-center text-muted small mt-auto">
-        &copy; {{ date('Y') }} Institut Teknologi Sepuluh Nopember (ITS) &bull; Pemrograman Berbasis Kerangka Kerja
+    <footer class="{{ $footerClass }} border-t py-6 mt-12 transition-colors duration-300">
+        <div class="max-w-6xl mx-auto px-4 text-center text-sm">
+            &copy; {{ date('Y') }} Institut Teknologi Sepuluh Nopember (ITS). Tugas 4 Multi-View.
+        </div>
     </footer>
 
-    <!-- Bootstrap 5 Bundle JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

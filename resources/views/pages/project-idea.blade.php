@@ -4,7 +4,6 @@
 
 @section('content')
     <div class="container mx-auto px-4 py-12 max-w-6xl">
-        <!-- Page Header -->
         <div class="text-center mb-12">
             <h1 class="text-4xl font-bold text-white mb-4">Final Project Idea</h1>
             <p class="text-xl text-gray-300">
@@ -13,7 +12,6 @@
             </p>
         </div>
         
-        <!-- Project Overview -->
         <div class="bg-gray-800/50 p-6 rounded-lg border border-white/10 mb-6">
             <h2 class="text-xl font-semibold text-white mb-4">Project Overview</h2>
             <p class="text-gray-300 leading-relaxed">
@@ -22,9 +20,7 @@
             </p>
         </div>
         
-        <!-- Project Details Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <!-- Objective -->
             <div class="bg-gray-800/50 p-6 rounded-lg border border-white/10">
                 <h3 class="text-xl font-semibold text-indigo-400 mb-4">Objective</h3>
                 <p class="text-gray-300 text-sm leading-relaxed">
@@ -32,8 +28,7 @@
                     in a web application environment.
                 </p>
             </div>
-            
-            <!-- Technologies -->
+        
             <div class="bg-gray-800/50 p-6 rounded-lg border border-white/10">
                 <h3 class="text-xl font-semibold text-indigo-400 mb-4">Technologies</h3>
                 <div class="flex flex-wrap gap-2">
@@ -45,7 +40,6 @@
             </div>
         </div>
         
-        <!-- Expected Outcomes -->
         <div class="bg-gray-800/50 p-6 rounded-lg border border-white/10 mb-6">
             <h3 class="text-xl font-semibold text-indigo-400 mb-4">Expected Outcomes</h3>
             <ul class="space-y-2 text-gray-300">
@@ -68,7 +62,6 @@
             </ul>
         </div>
         
-        <!-- Status Badge -->
         <div class="bg-gray-800/50 p-6 rounded-lg border border-white/10 text-center">
             <div class="inline-block px-6 py-3 bg-indigo-900/30 border border-indigo-500/30 rounded-lg">
                 <p class="text-sm text-indigo-300">
