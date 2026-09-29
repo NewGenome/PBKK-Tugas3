@@ -33,19 +33,19 @@
                     </div>
 
                     <div class="{{ $labelClass }}">Nama Mahasiswa:</div>
-                    <div class="font-medium">Felix Aldorino</div>
+                    <div class="font-medium">{{ $nama }}</div>
 
                     <div class="{{ $labelClass }}">Tanggal Lahir:</div>
-                    <div class="font-medium">26 Juli 2006</div>
+                    <div class="font-medium">{{ $tanggalLahir }}</div>
 
                     <div class="{{ $labelClass }}">Tempat Lahir:</div>
-                    <div class="font-medium">Jakarta</div>
+                    <div class="font-medium">{{ $tempatLahir }}</div>
 
                     <div class="{{ $labelClass }}">Departemen:</div>
-                    <div class="font-medium">Teknik Informatika</div>
+                    <div class="font-medium">{{ $departemen }}</div>
 
                     <div class="{{ $labelClass }}">Fakultas:</div>
-                    <div class="font-medium">FTEIC - Fakultas Teknik Elektro dan Informatika</div>
+                    <div class="font-medium">{{ $fakultas }}</div>
 
                     <div class="{{ $labelClass }}">Email Kampus:</div>
                     <div class="font-medium text-pink-600">{{ $email }}</div>

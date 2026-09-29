@@ -15,7 +15,6 @@
             <x-status-banner type="info" message="Silakan isi form di bawah ini untuk mengajukan ide riset Anda." />
         @endif
 
-        <!-- Form action mengirimkan parameter mode agar tidak reset saat submit -->
         <form action="{{ route('ide-agent.store', ['mode' => request()->query('mode')]) }}" method="POST" class="mt-6 space-y-4 max-w-lg">
             @csrf
             

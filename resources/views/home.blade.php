@@ -17,4 +17,12 @@
             Jl. Raya ITS, Keputih, Kecamatan Sukolilo, Kota Surabaya, Jawa Timur 60111
         </p>
     </div>
+    
+    <h3 class="text-xl font-bold mt-8 mb-4"></h3>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <x-info-card title="Fakultas" value="8" />
+    <x-info-card title="Program Studi" value="42" />
+    <x-info-card title="Simetris" value="Ya" />
+    
+</div>
 @endsection

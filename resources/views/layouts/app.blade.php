@@ -8,9 +8,11 @@
 </head>
 
 @php
+    // cek dark mode
     $currentMode = request()->query('mode', 'light');
     $isDarkMode = $currentMode === 'dark';
     
+    // toggle untuk reverse
     $toggleMode = $isDarkMode ? 'light' : 'dark';
     
     $bodyClass = $isDarkMode ? 'bg-gray-900 text-gray-100' : 'bg-gray-50 text-gray-800';
@@ -57,12 +59,6 @@
     <main class="flex-grow max-w-6xl mx-auto px-4 py-8 w-full">
         @yield('content')
     </main>
-
-    <footer class="{{ $footerClass }} border-t py-6 mt-12 transition-colors duration-300">
-        <div class="max-w-6xl mx-auto px-4 text-center text-sm">
-            &copy; {{ date('Y') }} Institut Teknologi Sepuluh Nopember (ITS). Tugas 4 Multi-View.
-        </div>
-    </footer>
 
 </body>
 </html>

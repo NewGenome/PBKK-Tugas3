@@ -32,6 +32,7 @@ class PageController extends Controller
     public function ideAgent(Request $request)
     {
         $mode = $request->query('mode', 'light');
+        //mengirimkan variabel $mode ke view ide-agent.blade.php.
         return view('ide-agent', compact('mode'));
     }
 
